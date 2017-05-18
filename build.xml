@@ -8,10 +8,11 @@
 
     <!-- buildターゲットは、dependsで他のターゲットに依存しており、左のターゲットから順に実行する　-->
 <!-- -->
+<!--
   <target name="build" depends="phpunit">
   </target>
    <target name="phpunit">
-       <phpunit bootstrap = "bootstrap.php" pharlocation="vendor/bin/phpunit">
+       <phpunit baootstrap = "bootstrap.php" pharlocation="vendor/bin/phpunit">
   <formatter todir = "log" type = "xml"/>
  <batchtest>
  <fileset dir = ".">
@@ -20,13 +21,12 @@
  </batchtest>
 </phpunit>
 </target>
-<!--
+-->
   <target name="build" description="run phpunit">
       <exec dir="${basedir}/tests" executable="${basedir}/vendor/bin/phpunit" output="${logdir}/phpunit.log">
-          <arg line="-i-bootstrap=${basedir}/bootstrap.php" />
+          <arg line="--bootstrap=${basedir}/tests/bootstrap.php" />
           <arg line="${basedir}/tests/*Test.php" />
     </exec>
 </target>
--->
 
 </project>
