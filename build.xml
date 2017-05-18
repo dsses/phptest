@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="phptest" default="build">
+ <target name="build" depends="phpunit"/>
+
+ <target name="phpunit" description="Run unit tests with PHPUnit">
+     <exec dir="${basedir}/Test" executable="/var/www/html/pu6/vender/bin/phpunit" failonerror="true">
+    <arg line="--colors --log-junit ${basedir}/build/logs/phpunit.xml ./"/>
+  </exec>
+ </target>
+
+</project>
