@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="phptest" default="build">
- <target name="build" depends="phpunit"/>
+<!-- basedirは基準となるパス。パスはbuild.xmlのあるパス  defaultで最初に見に行くターゲットをbuildにする　-->
+<project name="Project Jenkins" basedir="." default="build">
+  <!-- propertyは変数を格納するとこ　$は変数-->
+  <property name="basedir" value="/var/www/html/pu6" />
+  <property name="logdir" value="log" />
 
- <target name="phpunit" description="Run unit tests with PHPUnit">
-     <exec dir="${basedir}/Test" executable="/var/www/html/pu6/vender/bin/phpunit" failonerror="true">
-    <arg line="--colors --log-junit ${basedir}/build/logs/phpunit.xml ./"/>
-  </exec>
- </target>
+    <!-- buildターゲットは、dependsで他のターゲットに依存しており、左のターゲットから順に実行する　-->
+<!-- -->
+    <!--
+  <target name="build" depends="phpunit">
+  </target>
+   <target name="phpunit">
+       <phpunit bootstrap = "bootstrap.php" pharlocation="vendor/bin/phpunit">
+ <batchtest>
+ <fileset dir = ".">
+     <include name = "**/*Test*.php"/>
+ </fileset>
+ </batchtest>
+</phpunit>
+</target>
+-->
+  <target name="build" description="run phpunit">
+      <exec dir="${basedir}/tests" executable="${basedir}/vendor/bin/phpunit" output="${logdir}/phpunit.log">
+          <arg line="--bootstrap=${basedir}/bootstrap.php" />
+          <arg line="${basedir}/tests/*Test.php" />
+    </exec>
+</target>
 
 </project>
