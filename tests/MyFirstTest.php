@@ -1,6 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require "../Human.php";
+require "../app/Human.php";
 
 class HumanTest extends TestCase {
 

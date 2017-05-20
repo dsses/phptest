@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="bootstrap.php" colors="true" codecoverage="true"
+    haltonfailure="false" printsummary="true">
+    <testsuite name="aaaa">
+        <directory>.</directory>
+    </testsuite>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory>../app</directory>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="coverage" title="aaaa"
+            charset="UTF-8" yui="true" highlight="true" lowUpperBound="35"
+            highLowerBound="70" />
+        <log type="coverage-clover" target="coverage/coverage.xml" />
+        <log type="coverage-php" target="coverage/serialized" />
+        <log type="coverage-text" target="php://stdout" showUncoverdFiles="false" />
+        <log type="junit" target="logs/junit.xml" logIncompleteSkipped="false" />
+        <log type="testdox-html" target="logs/testdox.html" />
+        <log type="testdox-text" target="logs/testdox.txt" />
+    </logging>
+</phpunit>

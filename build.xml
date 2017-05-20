@@ -8,25 +8,12 @@
   <property name="outputDir" value="./result/" override="false"/>
 
     <!-- buildターゲットは、dependsで他のターゲットに依存しており、左のターゲットから順に実行する　-->
-<!-- -->
   <target name="build" depends="phpunit">
   </target>
-  <!--
-    <target name="phpunit">
-        <phpunit codecoverage="false" bootstrap = "test/bootstrap.php" pharlocation="vendor/bin/phpunit">
-            <batchtest>
-                <fileset dir="test" >
-                    <include name="*Test.php" />
-                </fileset>
-            </batchtest>
-            <formatter type="xml" outfile="${outputDir}/phpunit.xml"/>
-        </phpunit>
-    </target>
-    -->
   <target name="phpunit" description="run phpunit">
     <exec dir="${basedir}/tests" executable="../vendor/bin/phpunit" output="${logdir}/phpunit.log" checkreturn="true">
-      <arg line="*Test.php" />
+      <arg value="--configuration" />
+      <arg path="phpunit.xml" />
     </exec>
   </target>
-
 </project>
